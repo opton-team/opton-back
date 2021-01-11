@@ -9,12 +9,13 @@ process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 const targetAddress = process.env.TARGET_EMAIL_ADDRESS;
 const address = process.env.EMAIL_ADDRESS;
 const pass = process.env.EMAIL_PASSWORD;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
+app.listen(PORT, () => console.log("Server Running"));
 
 const contactEmail = nodemailer.createTransport({
   service: "gmail",
